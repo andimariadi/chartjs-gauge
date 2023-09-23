@@ -110,7 +110,7 @@ const GaugeController = Chart.controllers.doughnut.extend({
     // interpolate
     const origin = this.getAngle({ chart: this.chart, valuePercent: previous.valuePercent });
     // TODO valuePercent is in current.valuePercent also
-    const target = this.getAngle({ chart: this.chart, valuePercent: this.getValuePercent(dataset, dataset.value) });
+    const target = this.getAngle({ chart: this.chart, valuePercent: this.getValuePercent(dataset, dataset.label) });
     const angle = origin + (target - origin) * ease;
 
     // draw
@@ -156,7 +156,7 @@ const GaugeController = Chart.controllers.doughnut.extend({
     const bottomMargin = (bottomMarginPercentage / 100) * width;
 
     const fmt = formatter || (value => value);
-    const valueText = fmt(dataset.value).toString();
+    const valueText = fmt(dataset.label).toString();
     ctx.textBaseline = 'middle';
     ctx.textAlign = 'center';
     if (fontSize) {
@@ -216,7 +216,7 @@ const GaugeController = Chart.controllers.doughnut.extend({
       dataset.data.sort((a, b) => a - b);
       meta.previous = meta.current || initialValue;
       meta.current = {
-        valuePercent: this.getValuePercent(dataset, dataset.value),
+        valuePercent: this.getValuePercent(dataset, dataset.label),
       };
     }
     Chart.controllers.doughnut.prototype.update.call(this, reset);

@@ -56,7 +56,7 @@ The gauge chart requires a value to be specified for the dataset. This is used t
 
 | Name       | Type     | Default     | Description
 | ---------- | -------- | ----------- | -----------
-| `value`    | `number` | `undefined` | Value used for the needle.
+| `label`    | `number` | `undefined` | Value used for the needle.
 | `minValue` | `number` | `0`         | Used to offset the start value.
 
 
@@ -69,7 +69,7 @@ var chart = new Chart(ctx, {
   type: 'gauge',
   data: {
     datasets: [{
-      value: 0.5,
+      label: 0.5,
       minValue: 0,
       data: [1, 2, 3, 4],
       backgroundColor: ['green', 'yellow', 'orange', 'red'],
